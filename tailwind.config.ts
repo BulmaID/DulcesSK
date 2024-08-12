@@ -1,3 +1,4 @@
+import { transform } from "next/dist/build/swc";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -8,13 +9,25 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      backgroundImage:{
+        slider:'linear-gradient(to top, #97BAF3 5%, transparent )',
+        thumbnails: 'linear-gradient(to top, #10012d 2%, transparent )',
       },
+      keyframes:{
+        showContent:{
+          to:{
+            transform : "translateY(0)",
+            filter: "blur(0)",
+            opacity: "1",
+          }
+        },
+       
+      },
+     animation:{
+      "show-content": "showContent 0.5s 0.7s ease-in-out 1 forwards"
+     }
     },
   },
-  plugins: [],
+  plugins: [require ('tailwind-animation-delay')],
 };
 export default config;

@@ -2,32 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: 'Alloystan';
+  src: url('/fonts/Alloystan.ttf.woff') format('woff'),
+       url('/fonts/Alloystan.ttf.svg#Alloystan') format('svg'),
+       url('/fonts/Alloystan.ttf.eot'),
+       url('/fonts/Alloystan.ttf.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+
+}
+* {
+  box-sizing: border-box;
+}
+::-webkit-scrollbar{
+  width: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+h1 {
+  font-family: 'Alloystan', sans-serif;
+  font-size: 7rem;
+  color: #a5d2de;
+}
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .carousel-container .carousel {
+    .w-full {
+      width: 100%;
+    }
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* globals.css */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+  white-space: nowrap;
 }
